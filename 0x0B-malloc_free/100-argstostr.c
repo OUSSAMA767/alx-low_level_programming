@@ -1,14 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
 
-/*
-create_array
-@size: size of array
-@c: character to store in array
-Return: pointer to the array
-creates array
-*/
-
 /**
  * Prototype for copy_strings_to_buffer
  */
@@ -27,14 +19,15 @@ char *str;
 
 if (ac == 0 || av == NULL)
 return (NULL);
+// Calculate the total length needed for the concatenated string
 for (i = 0; i < ac; i++)
 {
 for (n = 0; av[i][n]; n++)
 l++;
 }
-
+// Add space for newline characters and a null terminator
 l += ac;
-
+// Allocate memory for the concatenated string
 str = malloc(sizeof(char) * (l + 1));
 
 if (str == NULL)
@@ -71,11 +64,11 @@ for (j = 0; src[i][j]; j++)
 dest[k] = src[i][j];
 k++;
 }
-
+// Add newline character after each string
 dest[k] = '\n';
 k++;
 }
-
+// Null-terminate the concatenated string
 dest[k] = '\0';
 
 return (0);
