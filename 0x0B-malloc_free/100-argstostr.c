@@ -1,6 +1,14 @@
 #include "main.h"
 #include <stdlib.h>
 
+/*
+create_array
+@size: size of array
+@c: character to store in array
+Return: pointer to the array
+creates array
+*/
+
 /**
  * Prototype for copy_strings_to_buffer
  */
