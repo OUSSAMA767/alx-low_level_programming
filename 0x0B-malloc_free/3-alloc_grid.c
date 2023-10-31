@@ -1,6 +1,9 @@
 #include "main.h"
 #include <stdlib.h>
 
+/* Function declaration */
+void initialize_grid(int **grid, int width, int height);
+
 /**
  * alloc_grid - create a 2D grid of integers
  * @width: width of the grid
@@ -9,34 +12,34 @@
  */
 int **alloc_grid(int width, int height)
 {
-int **mee;
-int x, y;
+    int **mee;
+    int x;
 
-if (width <= 0 || height <= 0)
-return (NULL);
+    if (width <= 0 || height <= 0)
+        return (NULL);
 
-mee = malloc(sizeof(int *) * height);
+    mee = malloc(sizeof(int *) * height);
 
-if (mee == NULL)
-return (NULL);
+    if (mee == NULL)
+        return (NULL);
 
-for (x = 0; x < height; x++)
-{
-mee[x] = malloc(sizeof(int) * width);
+    for (x = 0; x < height; x++)
+    {
+        mee[x] = malloc(sizeof(int) * width);
 
-if (mee[x] == NULL)
-{
-for (; x >= 0; x--)
-free(mee[x]);
+        if (mee[x] == NULL)
+        {
+            for (; x >= 0; x--)
+                free(mee[x]);
 
-free(mee);
-return (NULL);
-}
-}
+            free(mee);
+            return (NULL);
+        }
+    }
 
-initialize_grid(mee, width, height);
+    initialize_grid(mee, width, height);
 
-return (mee);
+    return (mee);
 }
 
 /**
@@ -47,13 +50,13 @@ return (mee);
  */
 void initialize_grid(int **grid, int width, int height)
 {
-int x, y;
+    int x, y;
 
-for (x = 0; x < height; x++)
-{
-for (y = 0; y < width; y++)
-{
-grid[x][y] = 0;
-}
-}
+    for (x = 0; x < height; x++)
+    {
+        for (y = 0; y < width; y++)
+        {
+            grid[x][y] = 0;
+        }
+    }
 }
