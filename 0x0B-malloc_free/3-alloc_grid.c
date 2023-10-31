@@ -12,34 +12,33 @@ void initialize_grid(int **grid, int width, int height);
  */
 int **alloc_grid(int width, int height)
 {
-    int **mee;
-    int x;
+int **mee;
+int x;
 
-    if (width <= 0 || height <= 0)
-        return (NULL);
+if (width <= 0 || height <= 0)
+return (NULL);
 
-    mee = malloc(sizeof(int *) * height);
+mee = malloc(sizeof(int *) * height);
 
-    if (mee == NULL)
-        return (NULL);
+if (mee == NULL)
+return (NULL);
 
-    for (x = 0; x < height; x++)
-    {
-        mee[x] = malloc(sizeof(int) * width);
+for (x = 0; x < height; x++)
+{
+mee[x] = malloc(sizeof(int) * width);
 
-        if (mee[x] == NULL)
-        {
-            for (; x >= 0; x--)
-                free(mee[x]);
+if (mee[x] == NULL)
+{
+for (; x >= 0; x--)
+free(mee[x]);
 
-            free(mee);
-            return (NULL);
-        }
-    }
+free(mee);
+return (NULL);
+}
+}
 
-    initialize_grid(mee, width, height);
-
-    return (mee);
+initialize_grid(mee, width, height);
+return (mee);
 }
 
 /**
@@ -50,13 +49,13 @@ int **alloc_grid(int width, int height)
  */
 void initialize_grid(int **grid, int width, int height)
 {
-    int x, y;
+int x, y;
 
-    for (x = 0; x < height; x++)
-    {
-        for (y = 0; y < width; y++)
-        {
-            grid[x][y] = 0;
-        }
-    }
+for (x = 0; x < height; x++)
+{
+for (y = 0; y < width; y++)
+{
+grid[x][y] = 0;
+}
+}
 }
