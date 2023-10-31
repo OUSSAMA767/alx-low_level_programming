@@ -14,34 +14,33 @@ int copy_strings_to_buffer(char *dest, char **src, int count);
  */
 char *argstostr(int ac, char **av)
 {
-    int i, n, r = 0, l = 0;
-    char *str;
+int i, n, r = 0, l = 0;
+char *str;
 
-    if (ac == 0 || av == NULL)
-        return (NULL);
+if (ac == 0 || av == NULL)
+return (NULL);
+for (i = 0; i < ac; i++)
+{
+for (n = 0; av[i][n]; n++)
+l++;
+}
 
-    for (i = 0; i < ac; i++)
-    {
-        for (n = 0; av[i][n]; n++)
-            l++;
-    }
+l += ac;
 
-    l += ac;
+str = malloc(sizeof(char) * (l + 1));
 
-    str = malloc(sizeof(char) * (l + 1));
+if (str == NULL)
+return (NULL);
 
-    if (str == NULL)
-        return (NULL);
+r = copy_strings_to_buffer(str, av, ac);
 
-    r = copy_strings_to_buffer(str, av, ac);
+if (r == -1)
+{
+free(str);
+return (NULL);
+}
 
-    if (r == -1)
-    {
-        free(str);
-        return (NULL);
-    }
-
-    return (str);
+return (str);
 }
 
 /**
@@ -53,23 +52,23 @@ char *argstostr(int ac, char **av)
  */
 int copy_strings_to_buffer(char *dest, char **src, int count)
 {
-    int i, j, k;
+int i, j, k;
 
-    k = 0;
+k = 0;
 
-    for (i = 0; i < count; i++)
-    {
-        for (j = 0; src[i][j]; j++)
-        {
-            dest[k] = src[i][j];
-            k++;
-        }
+for (i = 0; i < count; i++)
+{
+for (j = 0; src[i][j]; j++)
+{
+dest[k] = src[i][j];
+k++;
+}
 
-        dest[k] = '\n';
-        k++;
-    }
+dest[k] = '\n';
+k++;
+}
 
-    dest[k] = '\0';
+dest[k] = '\0';
 
-    return 0;
+return 0;
 }
